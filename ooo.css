@@ -1,4 +1,10 @@
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssef Berrissoul - Cybersécurité & Innovation</title>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -36,7 +42,7 @@
             50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
         }
 
-         /* Navigation */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -131,12 +137,18 @@
             justify-content: center;
             text-align: center;
             position: relative;
+            padding: 2rem;
         }
 
         .hero-content {
             animation: fadeInUp 1s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
         }
- /* Photo de profil avec effets */
+
+        /* Photo de profil avec effets */
         .profile-photo {
             position: relative;
             width: 200px;
@@ -209,8 +221,8 @@
 
         .glitch::before,
         .glitch::after {
-                content: attr(data-text);
-                position: absolute;
+            content: attr(data-text);
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -263,6 +275,27 @@
         @keyframes typewriter {
             from { width: 0; }
             to { width: 100%; }
+        }
+
+        /* Bouton CTA */
+        .btn {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.4);
         }
 
         /* Sections */
@@ -321,124 +354,6 @@
             box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
         }
 
-        /* Compétences */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-category {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #00ffff;
-        }
-
-        .skill-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            margin: 0.5rem 0;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #00ffff, #ff00ff);
-            border-radius: 4px;
-            animation: fillBar 2s ease-out forwards;
-            transform-origin: left;
-        }
-
-        @keyframes fillBar {
-            from { transform: scaleX(0); }
-            to { transform: scaleX(1); }
-        }
-
-        /* Projets */
-        .project-card {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.4);
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tech-tag {
-            background: rgba(0, 255, 255, 0.2);
-            color: #00ffff;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(0, 255, 255, 0.5);
-        }
-
-        /* Contact */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: #ffffff;
-            font-size: 1rem;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #00ffff, #ff00ff);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            color: #ffffff;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(12, 12, 12, 0.9);
-            border-top: 1px solid rgba(0, 255, 255, 0.3);
-        }
-
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -460,6 +375,14 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(12, 12, 12, 0.9);
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
         }
 
         /* Responsive */
@@ -510,16 +433,208 @@
                 font-size: 1.2rem;
                 padding: 0.5rem;
             }
-        
-            .cards-container {
-                grid-template-columns: 1fr;
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
             }
-            
+
+            .glitch {
+                font-size: 2.5rem;
+            }
+
             .subtitle {
                 font-size: 1.2rem;
             }
-            
+
             .section-title {
                 font-size: 2rem;
             }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
         }
+
+        @media (max-width: 480px) {
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .glitch {
+                font-size: 2rem;
+            }
+
+            .hero-content {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particules animées -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">YB</div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile-photo">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Youssef Berrissoul" />
+            </div>
+            <h1 class="glitch" data-text="YOUSSEF BERRISSOUL">YOUSSEF BERRISSOUL</h1>
+            <p class="subtitle">Ingénieur Cybersécurité & Innovation Numérique</p>
+            <a href="#about" class="btn">Découvrir mon parcours</a>
+        </div>
+    </section>
+
+    <!-- À Propos -->
+    <section id="about" class="fade-in">
+        <h2 class="section-title">À Propos</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>🎓 Formation</h3>
+                <p><strong>Ingénieur en Sécurité IT et Confiance Numérique</strong><br>
+                École Nationale Supérieure de l'IA et Sciences des Données - Taroudant</p>
+                <p><strong>DUT Génie Informatique</strong><br>
+                École Supérieure de Technologie de Fès</p>
+            </div>
+            <div class="card">
+                <h3>🔒 Passion</h3>
+                <p>Passionné par la cybersécurité et les nouvelles technologies, je me spécialise dans la protection des systèmes d'information et le développement d'applications sécurisées.</p>
+            </div>
+            <div class="card">
+                <h3>🎯 Objectif</h3>
+                <p>Recherche active de stages et opportunités pour mettre en pratique mes compétences en sécurité informatique et contribuer à des projets innovants.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="fade-in">
+        <h2 class="section-title">Contact</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>📧 Email</h3>
+                <p>youssef.berrissoul.15@edu.uiz.ac.ma</p>
+                <p>youssef.berrissoul@usmba.ac.ma</p>
+            </div>
+            <div class="card">
+                <h3>📱 Téléphone</h3>
+                <p>+212 6 30 38 81 37</p>
+            </div>
+            <div class="card">
+                <h3>📍 Localisation</h3>
+                <p>64 Lots My Driss Tghate, Fès</p>
+            </div>
+            <div class="card">
+                <h3>🌐 GitHub</h3>
+                <p>YoussefBerrissoul1</p>
+                <p>60+ contributions cette année</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Youssef Berrissoul - Cybersécurité | Conçu avec passion pour l'innovation</p>
+    </footer>
+
+    <script>
+        // Création des particules animées
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Animation au scroll
+        function observeElements() {
+            const elements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // JavaScript pour le menu mobile
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fermer le menu quand on clique sur un lien
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Fermer le menu si on clique en dehors
+        document.addEventListener('click', function(event) {
+            if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Navigation fluide
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            observeElements();
+        });
+    </script>
+</body>
+</html>

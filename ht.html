@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssef Berrissoul - Cybersécurité & Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Particules animées en arrière-plan */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+         /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(12, 12, 12, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #00ffff;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #00ffff;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Photo de profil */
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid #00ffff;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            padding: 4px;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #1a1a2e;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.5); }
+            50% { box-shadow: 0 0 50px rgba(0, 255, 255, 0.8); }
+            100% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.5); }
+        }
+
+        .glitch {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            position: relative;
+            color: #ffffff;
+            animation: glitch 2s infinite;
+        }
+
+        .glitch::before,
+        .glitch::after {
+                content: attr(data-text);
+                position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitch-1 0.3s infinite;
+            color: #00ffff;
+            z-index: -1;
+        }
+
+        .glitch::after {
+            animation: glitch-2 0.3s infinite;
+            color: #ff00ff;
+            z-index: -1;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        @keyframes glitch-1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(2px, -2px); }
+            40% { transform: translate(2px, 2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(-2px, 2px); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #00ffff;
+            margin-bottom: 2rem;
+            animation: typewriter 3s steps(40) 1s both;
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Liens de contact */
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #00ffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        .contact-link:hover {
+            background: rgba(0, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        /* Compétences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #00ffff;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            border-radius: 4px;
+            animation: fillBar 2s ease-out forwards;
+            transform-origin: left;
+        }
+
+        @keyframes fillBar {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        /* Projets */
+        .project-card {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.4);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 255, 255, 0.2);
+            color: #00ffff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 255, 255, 0.5);
+        }
+
+        /* Contact */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(12, 12, 12, 0.9);
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(12, 12, 12, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: left 0.3s ease;
+                z-index: 999;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: all 0.3s ease;
+            }
+
+            nav ul.active li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            nav ul.active li:nth-child(1) { transition-delay: 0.1s; }
+            nav ul.active li:nth-child(2) { transition-delay: 0.2s; }
+            nav ul.active li:nth-child(3) { transition-delay: 0.3s; }
+            nav ul.active li:nth-child(4) { transition-delay: 0.4s; }
+            nav ul.active li:nth-child(5) { transition-delay: 0.5s; }
+            nav ul.active li:nth-child(6) { transition-delay: 0.6s; }
+
+            nav a {
+                font-size: 1.2rem;
+                padding: 0.5rem;
+            }
+        
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            /* Photo plus grande sur mobile */
+            .profile-photo {
+                width: 180px;
+                height: 180px;
+            }
+
+            .glitch {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Desktop - Photo encore plus grande */
+        @media (min-width: 1024px) {
+            .profile-photo {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particules animées -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">YOUSSEF BERRISSOUL</div>  
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile-photo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMWExYTJlIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzMCIgZmlsbD0iIzAwZmZmZiIgb3BhY2l0eT0iMC44Ii8+CjxwYXRoIGQ9Ik02MCAxtwBMNjAgMTQwTDE0MCAxNDBMMTQwIDEyMEM5MjAgMTIwIDgwIDEwOCA4MCA5NkM4MCA4NCA5MiA3MiAxMDAgNzJDMTA4IDcyIDEyMCA4NCAxMjAgOTZDMTIwIDEwOCAxMDggMTIwIDEwMCAxMjBINjBaIiBmaWxsPSIjMDBmZmZmIiBvcGFjaXR5PSIwLjgiLz4KPC9zdmc+" alt="Youssef Berrissoul">
+            </div>
+            <h1 class="glitch" data-text="YOUSSEF BERRISSOUL">YOUSSEF BERRISSOUL</h1>
+            <p class="subtitle">Ingénieur Cybersécurité & Innovation Numérique</p>
+            <a href="#about" class="btn">Découvrir mon parcours</a>
+        </div>
+    </section>
+
+    <!-- À Propos -->
+    <section id="about" class="fade-in">
+        <h2 class="section-title">À Propos</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>🎓 Formation</h3>
+                <p><strong>Ingénieur en Sécurité IT et Confiance Numérique</strong><br>
+                École Nationale Supérieure de l'IA et Sciences des Données - Taroudant</p>
+                <p><strong>DUT Génie Informatique</strong><br>
+                École Supérieure de Technologie de Fès</p>
+            </div>
+            <div class="card">
+                <h3>🔒 Passion</h3>
+                <p>Passionné par la cybersécurité et les nouvelles technologies, je me spécialise dans la protection des systèmes d'information et le développement d'applications sécurisées.</p>
+            </div>
+            <div class="card">
+                <h3>🎯 Objectif</h3>
+                <p>Recherche active de stages et opportunités pour mettre en pratique mes compétences en sécurité informatique et contribuer à des projets innovants.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="skills" class="fade-in">
+        <h2 class="section-title">Compétences Techniques</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>💻 Programmation</h3>
+                <div class="skill-item">
+                    <span>Python</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>Java</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>C#</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>C++</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>🌐 Développement Web</h3>
+                <div class="skill-item">
+                    <span>JavaScript</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>Node.js</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>HTML/CSS</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>Express.js</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>🔐 Sécurité & Réseaux</h3>
+                <div class="skill-item">
+                    <span>TCP/IP</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>Routage</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>VLSM</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>Sécurité Réseau</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>🛠️ Outils & Technologies</h3>
+                <div class="skill-item">
+                    <span>SQL</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>MySQL Workbench</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>VS Code</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>MATLAB</span>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projects" class="fade-in">
+        <h2 class="section-title">Projets Réalisés</h2>
+        
+        <div class="project-card">
+            <h3>🧮 Calculette Avancée (C#)</h3>
+            <p>Application de calculatrice développée en C# avec interface graphique moderne. Implémentation d'opérations mathématiques avancées et gestion des erreurs.</p>
+            <div class="project-tech">
+                <span class="tech-tag">C#</span>
+                <span class="tech-tag">WinForms</span>
+                <span class="tech-tag">Interface Utilisateur</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>⚡ Système d'Ascenseur Intelligent</h3>
+            <p>Simulation d'un système de gestion d'ascenseurs avec algorithmes d'optimisation pour réduire les temps d'attente et améliorer l'efficacité énergétique.</p>
+            <div class="project-tech">
+                <span class="tech-tag">C#</span>
+                <span class="tech-tag">Algorithmes</span>
+                <span class="tech-tag">Optimisation</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>🏨 FezCity - Application Touristique</h3>
+            <p>Plateforme web complète pour la promotion du tourisme à Fès, avec système de réservation, guide interactif et évaluation des services touristiques.</p>
+            <div class="project-tech">
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Web Development</span>
+                <span class="tech-tag">Tourism</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>📝 Système de Gestion Étudiants</h3>
+            <p>Application Node.js pour la gestion complète des étudiants avec authentification, gestion des notes, emplois du temps et communication.</p>
+            <div class="project-tech">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Base de données</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>🛒 Nestlé Shop - E-commerce Interne</h3>
+            <p>Plateforme e-commerce dédiée au personnel de Nestlé pour la commande de produits internes avec système de validation RH et gestion des stocks.</p>
+            <div class="project-tech">
+                <span class="tech-tag">Blazor</span>
+                <span class="tech-tag">E-commerce</span>
+                <span class="tech-tag">Gestion RH</span>
+                <span class="tech-tag">Validation</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>📊 Système de Formulaires (C#)</h3>
+            <p>Application robuste de gestion de formulaires avec validation avancée, stockage sécurisé des données et génération de rapports automatisés.</p>
+            <div class="project-tech">
+                <span class="tech-tag">C#</span>
+                <span class="tech-tag">Base de données</span>
+                <span class="tech-tag">Validation</span>
+                <span class="tech-tag">Rapports</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expérience -->
+    <section id="experience" class="fade-in">
+        <h2 class="section-title">Expérience Professionnelle</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>🏭 OCP El Jadida</h3>
+                <p><strong>Stage d'Initiation</strong> | Juillet-Août 2023</p>
+                <p>Conception et déploiement d'une application web pour la gestion centralisée des standards opérationnels. Simplification des processus documentaires et réduction significative de la paperasse.</p>
+            </div>
+            <div class="card">
+                <h3>🍫 Nestlé El Jadida</h3>
+                <p><strong>Stage Technique de Fin d'Études</strong> | Mai 2023-Juin 2024</p>
+                <p>Développement d'une plateforme e-commerce interne pour la gestion des achats du personnel. Implémentation d'un système de commande avec validation RH et gestion des stocks.</p>
+            </div>
+            <div class="card">
+                <h3>🎓 Projet Académique</h3>
+                <p><strong>Modèle Décisionnel Touristique</strong> | Janvier-Avril 2024</p>
+                <p>Développement d'un système d'évaluation de la qual
