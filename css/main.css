@@ -136,12 +136,12 @@
         .hero-content {
             animation: fadeInUp 1s ease-out;
         }
- /* Photo de profil avec effets */
+   /* Photo de profil avec effets */
         .profile-photo {
             position: relative;
-            width: 200px;
-            height: 200px;
-            margin-bottom: 1rem;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 1rem auto;
             animation: photoFloat 6s ease-in-out infinite;
         }
 
@@ -197,7 +197,7 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-
+ 
         .glitch {
             font-size: 4rem;
             font-weight: bold;
@@ -254,10 +254,11 @@
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             color: #00ffff;
             margin-bottom: 2rem;
-            animation: typewriter 3s steps(40) 1s both;
+            font-family:Arial, Helvetica, sans-serif
+            /* animation: typewriter 3s steps(40) 1s both; */
         }
 
         @keyframes typewriter {
